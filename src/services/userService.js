@@ -14,6 +14,14 @@ export const getAllUsers = async () => {
     ]
   });
 };
+export const getAllUsersNormal = async () => {
+  return await User.findAll({
+    include: [
+      { model: Role, as: "role", where: { name: ROLES.USER } }, // solo admins
+      { model: Status, as: "status" }
+    ]
+  });
+};
 
 export const getUserById = async (id) => {
   return await User.findByPk(id, {
