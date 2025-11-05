@@ -15,15 +15,22 @@ import userRoutes from "./routes/userRoutes.js";
 import roleRoutes from "./routes/roleRoutes.js";
 import statusRoutes from "./routes/statusRoutes.js";
 
+import { errorHandler } from "./middlewares/errorMiddleware.js";
+
 dotenv.config();
 
 const app = express();
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// Middlewares
+// Middleware para parsear formularios
 app.use(express.urlencoded({ extended: true }));
+app.use(express.json()); // Para recibir JSON
+
+// Carpeta pública
 app.use(express.static(path.join(__dirname, "public")));
+
+// Cookies y sesión
 app.use(cookieParser());
 app.use(session({
   secret: process.env.SESSION_SECRET || "secret_key",
@@ -31,6 +38,8 @@ app.use(session({
   saveUninitialized: false,
   cookie: { maxAge: 1000 * 60 * 60 * 24 } // 1 día
 }));
+
+// Flash messages
 app.use(flash());
 
 // EJS-Mate para layouts
@@ -40,7 +49,6 @@ app.set("views", path.join(__dirname, "views"));
 
 // Variables globales para todas las vistas
 app.use((req, res, next) => {
-  // Esto asegura que las vistas siempre tengan el usuario
   res.locals.user = req.session.user || null;
   res.locals.success_msg = req.flash("success_msg");
   res.locals.error_msg = req.flash("error_msg");
@@ -55,6 +63,12 @@ app.use("/", roleRoutes);
 app.use("/", statusRoutes);
 
 // Ruta 404
+app.use((req, res, next) => {
+  res.status(404).render("404", { title: "Página no encontrada" });
+});
+
+// Middleware de manejo de errores global
+app.use(errorHandler);
 
 // Puerto
 const PORT = process.env.PORT || 3000;
