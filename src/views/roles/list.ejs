@@ -1,60 +1,8 @@
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="/css/user.css">
 
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
-  <script src="https://cdn.tailwindcss.com"></script>
-
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            primary: '#6366f1',
-            'primary-hover': '#4f46e5',
-            success: '#10b981',
-            danger: '#ef4444',
-            glass: 'rgba(255, 255, 255, 0.1)',
-          },
-          animation: {
-            'float': 'float 6s ease-in-out infinite',
-            'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-          },
-          keyframes: {
-            float: {
-              '0%, 100%': { transform: 'translateY(0)' },
-              '50%': { transform: 'translateY(-10px)' }
-            }
-          }
-        }
-      }
-    }
-  </script>
-
-  <style>
-    .glass {
-      background: rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-    }
-    .btn-hover {
-      @apply transition-all duration-300 transform hover:scale-105 hover:shadow-lg;
-    }
-    .badge {
-      @apply px-3 py-1 rounded-full text-xs font-medium uppercase tracking-wider;
-    }
-    .table-container {
-      overflow-x-auto;
-      -webkit-overflow-scrolling: touch;
-    }
-    .table th {
-      @apply bg-white/10 text-left text-sm font-semibold text-gray-200 uppercase tracking-wider;
-    }
-    .table td {
-      @apply border-t border-white/10;
-    }
-    .table tr:hover {
-      @apply bg-white/5 transition-colors;
-    }
-  </style>
 
 <body class="min-h-screen bg-gradient-to-br from-indigo-900 via-purple-900 to-pink-800 text-white p-4 md:p-8">
 
@@ -131,5 +79,7 @@
     </div>
 
   </div>
+  <script src="/js/user.js">
 
+  </script>
 </body>

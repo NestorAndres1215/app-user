@@ -1,69 +1,19 @@
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="/css/user.css">
 
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
-  <script src="https://cdn.tailwindcss.com"></script>
-
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            primary: '#6366f1',
-            'primary-hover': '#4f46e5',
-            success: '#10b981',
-            warning: '#f59e0b',
-            danger: '#ef4444',
-            glass: 'rgba(255, 255, 255, 0.1)',
-          },
-          animation: {
-            'float': 'float 6s ease-in-out infinite',
-            'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-          },
-          keyframes: {
-            float: {
-              '0%, 100%': { transform: 'translateY(0)' },
-              '50%': { transform: 'translateY(-10px)' }
-            }
-          }
-        }
-      }
-    }
-  </script>
-
-  <style>
-    .glass {
-      background: rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-    }
-    .btn-hover {
-      @apply transition-all duration-300 transform hover:scale-105 hover:shadow-lg;
-    }
-    .badge {
-      @apply px-3 py-1 rounded-full text-xs font-medium uppercase tracking-wider;
-    }
-    .table-container {
-      overflow-x-auto;
-      -webkit-overflow-scrolling: touch;
-    }
-    .table th {
-      @apply bg-white/10 text-left text-sm font-semibold text-gray-200 uppercase tracking-wider;
-    }
-    .table td {
-      @apply border-t border-white/10;
-    }
-    .table tr:hover {
-      @apply bg-white/5 transition-colors;
-    }
-  </style>
 
 <body class="min-h-screen bg-gradient-to-br from-indigo-900 via-purple-900 to-pink-800 text-white p-4 md:p-8">
 
   <!-- Fondo animado -->
   <div class="absolute inset-0 -z-10 overflow-hidden">
-    <div class="absolute top-10 left-10 w-72 h-72 bg-purple-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse-slow"></div>
-    <div class="absolute bottom-10 right-10 w-80 h-80 bg-pink-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse-slow animation-delay-2000"></div>
+    <div
+      class="absolute top-10 left-10 w-72 h-72 bg-purple-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse-slow">
+    </div>
+    <div
+      class="absolute bottom-10 right-10 w-80 h-80 bg-pink-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse-slow animation-delay-2000">
+    </div>
   </div>
 
   <div class="max-w-5xl mx-auto">
@@ -72,7 +22,8 @@
     <div class="glass rounded-3xl p-6 md:p-8 mb-6 shadow-2xl">
       <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
         <div class="flex items-center gap-4">
-          <div class="w-14 h-14 bg-gradient-to-br from-success to-emerald-600 rounded-2xl flex items-center justify-center shadow-lg">
+          <div
+            class="w-14 h-14 bg-gradient-to-br from-success to-emerald-600 rounded-2xl flex items-center justify-center shadow-lg">
             <i class="fas fa-circle-check text-white text-2xl"></i>
           </div>
           <div>
@@ -95,9 +46,10 @@
             </tr>
           </thead>
           <tbody class="divide-y divide-white/10">
-            <% statuses.forEach(status => { %>
+            <% statuses.forEach(status=> { %>
               <tr class="hover:bg-white/5 transition-colors">
-                <td class="px-6 py-4 text-sm font-mono">#<%= status.id %></td>
+                <td class="px-6 py-4 text-sm font-mono">#<%= status.id %>
+                </td>
                 <td class="px-6 py-4">
                   <div class="flex items-center gap-3">
                     <!-- Icono según estado -->
@@ -113,33 +65,41 @@
                         'fa-clock text-warning' %>"></i>
                     </div>
                     <div>
-                      <p class="font-medium"><%= status.name %></p>
+                      <p class="font-medium">
+                        <%= status.name %>
+                      </p>
                       <p class="text-xs text-gray-400">Estado del usuario</p>
                     </div>
                   </div>
                 </td>
-      
+
               </tr>
-            <% }) %>
+              <% }) %>
           </tbody>
         </table>
 
         <!-- Empty state -->
-        <% if (statuses.length === 0) { %>
+        <% if (statuses.length===0) { %>
           <div class="text-center py-12">
             <i class="fas fa-circle-slash text-6xl text-gray-500 mb-4"></i>
             <p class="text-xl text-gray-400">No hay estados registrados</p>
             <a href="/status/create" class="mt-4 inline-block text-success hover:underline">Crear el primero</a>
           </div>
-        <% } %>
+          <% } %>
       </div>
     </div>
 
     <!-- Footer -->
     <div class="mt-8 text-center text-gray-400 text-sm">
-      <p>Mostrando <strong><%= statuses.length %></strong> estado<%= statuses.length !== 1 ? 's' : '' %></p>
+      <p>Mostrando <strong>
+          <%= statuses.length %>
+        </strong> estado<%= statuses.length !==1 ? 's' : '' %>
+      </p>
     </div>
 
   </div>
+  <script src="/js/user.js">
+
+  </script>
 
 </body>
