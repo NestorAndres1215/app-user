@@ -1,31 +1,25 @@
 // Middleware para rutas que requieren sesión activa
+import { MESSAGES } from "../utils/constants.js";
+import { redirectWithMessage } from "./authHelpers.js";
 export const authMiddleware = (req, res, next) => {
-  if (!req.session.user) {
-    req.flash("error", "Debes iniciar sesión para acceder.");
-    return res.redirect("/login");
-  }
+  const user = req.session.user;
 
-  // Verifica si el usuario está activo
-  if (req.session.user.status?.name !== "active") {
-    req.flash("error", "Tu cuenta está inactiva. Contacta al administrador.");
-    return res.redirect("/login");
-  }
+  if (!user) return redirectWithMessage(res, "/login", MESSAGES.LOGIN_REQUIRED);
+
+  if (user.status?.name !== "active")
+    return redirectWithMessage(res, "/login", MESSAGES.ACCOUNT_INACTIVE);
 
   next();
 };
 
 // Middleware para permitir solo administradores
 export const adminMiddleware = (req, res, next) => {
-  if (!req.session.user) {
-    req.flash("error", "Debes iniciar sesión.");
-    return res.redirect("/login");
-  }
+  const user = req.session.user;
 
-  // Verifica rol de admin
-  if (req.session.user.role?.name !== "admin") {
-    req.flash("error", "No tienes permisos para acceder a esta sección.");
-    return res.redirect("/dashboard");
-  }
+  if (!user) return redirectWithMessage(res, "/login", MESSAGES.LOGIN_REQUIRED);
+
+  if (user.role?.name !== ROLES.ADMIN)
+    return redirectWithMessage(res, "/dashboard", MESSAGES.NO_PERMISSION);
 
   next();
 };
@@ -33,8 +27,6 @@ export const adminMiddleware = (req, res, next) => {
 // Middleware opcional para rutas de invitados (login / registro)
 // Si ya está logueado, lo redirige al dashboard según su rol
 export const guestMiddleware = (req, res, next) => {
-  if (req.session.user) {
-    return res.redirect("/dashboard");
-  }
+  if (req.session.user) return res.redirect("/dashboard");
   next();
 };
