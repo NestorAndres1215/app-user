@@ -11,7 +11,7 @@ import {
 
 const router = Router();
 
-router.get("/", authMiddleware, adminMiddleware, listStatus);
+router.get("/status", authMiddleware, adminMiddleware, listStatus);
 router.get("/create", authMiddleware, adminMiddleware, createStatusForm);
 router.post("/create", authMiddleware, adminMiddleware, createStatus);
 router.get("/edit/:id", authMiddleware, adminMiddleware, editStatusForm);

@@ -13,7 +13,7 @@ export const createRole = async (req, res) => {
   const { name } = req.body;
   await roleService.createRole({ name });
   req.flash("message", "Rol creado correctamente");
-  res.redirect("/roles");
+  res.redirect("/role/role");
 };
 
 export const editRoleForm = async (req, res) => {

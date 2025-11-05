@@ -12,7 +12,7 @@ import {
 const router = Router();
 
 // Listar roles
-router.get("/", authMiddleware, adminMiddleware, listRoles);
+router.get("/role", authMiddleware, adminMiddleware, listRoles);
 
 // Crear rol
 router.get("/create", authMiddleware, adminMiddleware, createRoleForm);

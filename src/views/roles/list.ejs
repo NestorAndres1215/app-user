@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Lista de Roles</title>
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#6366f1',
+            'primary-hover': '#4f46e5',
+            success: '#10b981',
+            danger: '#ef4444',
+            glass: 'rgba(255, 255, 255, 0.1)',
+          },
+          animation: {
+            'float': 'float 6s ease-in-out infinite',
+            'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+          },
+          keyframes: {
+            float: {
+              '0%, 100%': { transform: 'translateY(0)' },
+              '50%': { transform: 'translateY(-10px)' }
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    .glass {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    .btn-hover {
+      @apply transition-all duration-300 transform hover:scale-105 hover:shadow-lg;
+    }
+    .badge {
+      @apply px-3 py-1 rounded-full text-xs font-medium uppercase tracking-wider;
+    }
+    .table-container {
+      overflow-x-auto;
+      -webkit-overflow-scrolling: touch;
+    }
+    .table th {
+      @apply bg-white/10 text-left text-sm font-semibold text-gray-200 uppercase tracking-wider;
+    }
+    .table td {
+      @apply border-t border-white/10;
+    }
+    .table tr:hover {
+      @apply bg-white/5 transition-colors;
+    }
+  </style>
+</head>
+<body class="min-h-screen bg-gradient-to-br from-indigo-900 via-purple-900 to-pink-800 text-white p-4 md:p-8">
+
+  <!-- Fondo animado -->
+  <div class="absolute inset-0 -z-10 overflow-hidden">
+    <div class="absolute top-10 left-10 w-72 h-72 bg-purple-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse-slow"></div>
+    <div class="absolute bottom-10 right-10 w-80 h-80 bg-pink-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse-slow animation-delay-2000"></div>
+  </div>
+
+  <div class="max-w-5xl mx-auto">
+
+    <!-- Header -->
+    <div class="glass rounded-3xl p-6 md:p-8 mb-6 shadow-2xl">
+      <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+        <div class="flex items-center gap-4">
+          <div class="w-14 h-14 bg-gradient-to-br from-primary to-purple-600 rounded-2xl flex items-center justify-center shadow-lg">
+            <i class="fas fa-shield-alt text-white text-2xl"></i>
+          </div>
+          <div>
+            <h1 class="text-3xl font-bold">Gestión de Roles</h1>
+            <p class="text-gray-300 text-sm">Administra los roles del sistema</p>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+
+    <!-- Tabla -->
+    <div class="glass rounded-3xl shadow-2xl overflow-hidden">
+      <div class="table-container">
+        <table class="table w-full">
+          <thead>
+            <tr>
+              <th class="px-6 py-4">ID</th>
+              <th class="px-6 py-4">Nombre del Rol</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-white/10">
+            <% roles.forEach(role => { %>
+              <tr class="hover:bg-white/5 transition-colors">
+                <td class="px-6 py-4 text-sm font-mono">#<%= role.id %></td>
+                <td class="px-6 py-4">
+                  <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 bg-gradient-to-br from-purple-600/20 to-pink-600/20 rounded-full flex items-center justify-center">
+                      <i class="fas fa-shield text-purple-400"></i>
+                    </div>
+                    <div>
+                      <p class="font-medium"><%= role.name %></p>
+                      <p class="text-xs text-gray-400">Rol del sistema</p>
+                    </div>
+                  </div>
+                </td>
+
+              </tr>
+            <% }) %>
+          </tbody>
+        </table>
+
+        <!-- Empty state -->
+        <% if (roles.length === 0) { %>
+          <div class="text-center py-12">
+            <i class="fas fa-shield-slash text-6xl text-gray-500 mb-4"></i>
+            <p class="text-xl text-gray-400">No hay roles registrados</p>
+            <a href="/roles/create" class="mt-4 inline-block text-primary hover:underline">Crear el primero</a>
+          </div>
+        <% } %>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="mt-8 text-center text-gray-400 text-sm">
+      <p>Mostrando <strong><%= roles.length %></strong> rol<%= roles.length !== 1 ? 'es' : '' %></p>
+    </div>
+
+  </div>
+
+</body>
+</html>
