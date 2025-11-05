@@ -1,61 +1,61 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Panel de Usuario</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+<script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
-  <script src="https://cdn.tailwindcss.com"></script>
-
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            primary: '#6366f1',
-            'primary-hover': '#4f46e5',
-            success: '#10b981',
-            glass: 'rgba(255, 255, 255, 0.1)',
-          },
-          animation: {
-            'float': 'float 6s ease-in-out infinite',
-            'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-          },
-          keyframes: {
-            float: {
-              '0%, 100%': { transform: 'translateY(0)' },
-              '50%': { transform: 'translateY(-10px)' }
-            }
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          primary: '#6366f1',
+          'primary-hover': '#4f46e5',
+          success: '#10b981',
+          glass: 'rgba(255, 255, 255, 0.1)',
+        },
+        animation: {
+          'float': 'float 6s ease-in-out infinite',
+          'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+        },
+        keyframes: {
+          float: {
+            '0%, 100%': { transform: 'translateY(0)' },
+            '50%': { transform: 'translateY(-10px)' }
           }
         }
       }
     }
-  </script>
+  }
+</script>
 
-  <style>
-    .glass {
-      background: rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-    }
-    .card-hover {
-      @apply transition-all duration-300 transform hover:scale-105 hover:shadow-2xl;
-    }
-    .btn-hover {
-      @apply transition-all duration-200 hover:shadow-lg;
-    }
-  </style>
-</head>
+<style>
+  .glass {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .card-hover {
+    @apply transition-all duration-300 transform hover:scale-105 hover:shadow-2xl;
+  }
+
+  .btn-hover {
+    @apply transition-all duration-200 hover:shadow-lg;
+  }
+</style>
+
 <body class="min-h-screen bg-gradient-to-br from-indigo-900 via-purple-900 to-pink-800 text-white p-4 md:p-8">
 
   <!-- Fondo animado -->
   <div class="absolute inset-0 -z-10 overflow-hidden">
-    <div class="absolute top-10 left-10 w-72 h-72 bg-purple-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse-slow"></div>
-    <div class="absolute bottom-10 right-10 w-80 h-80 bg-pink-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse-slow animation-delay-2000"></div>
-    <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-indigo-500 rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-float"></div>
+    <div
+      class="absolute top-10 left-10 w-72 h-72 bg-purple-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse-slow">
+    </div>
+    <div
+      class="absolute bottom-10 right-10 w-80 h-80 bg-pink-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse-slow animation-delay-2000">
+    </div>
+    <div
+      class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-indigo-500 rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-float">
+    </div>
   </div>
 
   <div class="max-w-4xl mx-auto">
@@ -66,10 +66,12 @@
         <div class="flex items-center gap-4">
           <!-- Avatar -->
           <div class="relative">
-            <div class="w-20 h-20 bg-gradient-to-br from-primary to-primary-hover rounded-full flex items-center justify-center shadow-lg">
+            <div
+              class="w-20 h-20 bg-gradient-to-br from-primary to-primary-hover rounded-full flex items-center justify-center shadow-lg">
               <i class="fas fa-user text-white text-3xl"></i>
             </div>
-            <div class="absolute -bottom-1 -right-1 w-6 h-6 bg-success rounded-full border-2 border-white flex items-center justify-center">
+            <div
+              class="absolute -bottom-1 -right-1 w-6 h-6 bg-success rounded-full border-2 border-white flex items-center justify-center">
               <i class="fas fa-check text-white text-xs"></i>
             </div>
           </div>
@@ -80,7 +82,8 @@
         </div>
 
         <!-- Cerrar sesión -->
-        <a href="/logout" class="inline-flex items-center gap-2 px-5 py-2.5 bg-white/10 rounded-xl text-sm font-medium hover:bg-white/20 transition-all btn-hover">
+        <a href="/logout"
+          class="inline-flex items-center gap-2 px-5 py-2.5 bg-white/10 rounded-xl text-sm font-medium hover:bg-white/20 transition-all btn-hover">
           <i class="fas fa-sign-out-alt"></i>
           Cerrar sesión
         </a>
@@ -96,15 +99,21 @@
       <div class="grid grid-cols-1 md:grid-cols-2 gap-5 text-sm">
         <div>
           <p class="text-gray-400">Nombre completo</p>
-          <p class="font-medium"><%= user.firstName %> <%= user.lastName %></p>
+          <p class="font-medium">
+            <%= user.firstName %>
+              <%= user.lastName %>
+          </p>
         </div>
         <div>
           <p class="text-gray-400">Usuario</p>
-          <p class="font-medium text-primary">@<%= user.username %></p>
+          <p class="font-medium text-primary">@<%= user.username %>
+          </p>
         </div>
         <div>
           <p class="text-gray-400">Email</p>
-          <p class="font-medium"><%= user.email %></p>
+          <p class="font-medium">
+            <%= user.email %>
+          </p>
         </div>
         <div>
           <p class="text-gray-400">Estado</p>
@@ -118,15 +127,19 @@
         <% if (user.phone) { %>
           <div>
             <p class="text-gray-400">Teléfono</p>
-            <p class="font-medium"><%= user.phone %></p>
+            <p class="font-medium">
+              <%= user.phone %>
+            </p>
           </div>
-        <% } %>
-        <% if (user.birthDate) { %>
-          <div>
-            <p class="text-gray-400">Fecha de nacimiento</p>
-            <p class="font-medium"><%= new Date(user.birthDate).toLocaleDateString('es-ES') %></p>
-          </div>
-        <% } %>
+          <% } %>
+            <% if (user.birthDate) { %>
+              <div>
+                <p class="text-gray-400">Fecha de nacimiento</p>
+                <p class="font-medium">
+                  <%= new Date(user.birthDate).toLocaleDateString('es-ES') %>
+                </p>
+              </div>
+              <% } %>
       </div>
     </div>
 
@@ -134,7 +147,8 @@
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
       <!-- Editar Perfil -->
       <a href="/users/edit/<%= user.id %>" class="glass rounded-3xl p-6 card-hover group text-center">
-        <div class="w-16 h-16 bg-gradient-to-br from-primary to-primary-hover rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:animate-pulse">
+        <div
+          class="w-16 h-16 bg-gradient-to-br from-primary to-primary-hover rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:animate-pulse">
           <i class="fas fa-user-edit text-white text-2xl"></i>
         </div>
         <h3 class="text-lg font-semibold mb-1">Editar Perfil</h3>
@@ -143,7 +157,8 @@
 
       <!-- Cambiar Contraseña -->
       <a href="/users/change-password" class="glass rounded-3xl p-6 card-hover group text-center">
-        <div class="w-16 h-16 bg-gradient-to-br from-success to-emerald-600 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:animate-pulse">
+        <div
+          class="w-16 h-16 bg-gradient-to-br from-success to-emerald-600 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:animate-pulse">
           <i class="fas fa-key text-white text-2xl"></i>
         </div>
         <h3 class="text-lg font-semibold mb-1">Cambiar Contraseña</h3>
@@ -153,10 +168,11 @@
 
     <!-- Mensaje motivacional -->
     <div class="mt-8 text-center text-gray-300 text-sm">
-      <p>Que tengas un excelente día, <strong><%= user.firstName %></strong></p>
+      <p>Que tengas un excelente día, <strong>
+          <%= user.firstName %>
+        </strong></p>
     </div>
 
   </div>
 
 </body>
-</html>
